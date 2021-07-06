@@ -8,6 +8,7 @@ use app\models\SectionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * SectionController implements the CRUD actions for Section model.
@@ -70,8 +71,16 @@ class SectionController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $existingSections = [Yii::$app->params['rootSectionName']];
+
+        $existingSections = ArrayHelper::merge(
+                            $existingSections, 
+                            ArrayHelper::map(Section::find()->asArray()->all(), 'id', 'name')
+                        );
+
         return $this->render('create', [
             'model' => $model,
+            'existingSections' => $existingSections
         ]);
     }
 
