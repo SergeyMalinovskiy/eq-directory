@@ -5,10 +5,9 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap4\Nav;
-use yii\bootstrap4\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -29,9 +28,9 @@ AppAsset::register($this);
     <?php $this->beginBody() ?>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="<?= Yii::$app->homeUrl?>">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="<?= Yii::$app->homeUrl ?>">
             <?= Html::img('@web/images/logo.png', ['height' => '30px']) ?>
-            <?= Yii::$app->name?>
+            <?= Yii::$app->name ?>
         </a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,14 +38,25 @@ AppAsset::register($this);
         <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="#">Sign out</a>
+                <?php if (Yii::$app->user->isGuest) : ?>
+                    <?= HTML::a('Войти', Url::toRoute(['/site/login']), ['class' => 'nav-link px-3'])?>
+                <?php else : ?>
+                    <?=
+                        Html::beginForm(['/site/logout'], 'post')
+                        . Html::submitButton(
+                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            ['class' => 'btn btn-link nav-link px-3']
+                        )
+                        . Html::endForm()
+                    ?>
+                <?php endif ?>
             </div>
         </div>
     </header>
 
     <div class="container-fluid">
         <div class="row">
-            <?= $this->render('../partials/menu')?>
+            <?= $this->render('../partials/menu') ?>
 
             <?php
             /* NavBar::begin([
