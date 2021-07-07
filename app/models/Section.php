@@ -27,7 +27,7 @@ class Section extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['pid'], 'integer'],
+            [['pid', 'creator_id', 'category_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -39,8 +39,13 @@ class Section extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'pid' => 'Pid',
-            'name' => 'Name',
+            'pid' => 'PID',
+            'name' => 'Наименование',
+            'creator_id' => 'Создатель',
+            'category_id'=> 'Категория',
+            'responsible_group_id' => 'Ответственная группа',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата изменения'
         ];
     }
 }
