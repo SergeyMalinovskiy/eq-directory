@@ -54,19 +54,19 @@ class Equipment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'comment' => 'Comment',
-            'serial_number' => 'Serial Number',
-            'lan_ports_count' => 'Lan Ports Count',
-            'uplink_ports_count' => 'Uplink Ports Count',
-            'mgt_ipv4_address' => 'Mgt Ipv4 Address',
-            'monsys_ipv4_address' => 'Monsys Ipv4 Address',
-            'pid' => 'Pid',
-            'creator_id' => 'Creator ID',
-            'category_id' => 'Category ID',
-            'responsible_group_id' => 'Responsible Group ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'title' => 'Наименование',
+            'comment' => 'Комментарий',
+            'serial_number' => 'Серийный номер',
+            'lan_ports_count' => 'Количество LAN портов',
+            'uplink_ports_count' => 'Количество UpLink портов',
+            'mgt_ipv4_address' => 'MGT IP адрес',
+            'monsys_ipv4_address' => 'IP адрес в системе мониторинга',
+            'pid' => 'Привязано',
+            'creator_id' => 'Создано',
+            'category_id' => 'Категория',
+            'responsible_group_id' => 'Ответсвенная группа',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
         ];
     }
 }
