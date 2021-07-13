@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers\Equipment;
+namespace app\controllers;
 
 use Yii;
 use app\models\Equipment\Equipment;

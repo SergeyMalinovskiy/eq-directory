@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers\Section;
+namespace app\controllers;
 
 class SectionCategoryController extends \yii\web\Controller
 {
