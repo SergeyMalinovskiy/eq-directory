@@ -14,8 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
-
     <?= $form->field($model, 'serial_number')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'lan_ports_count')->textInput() ?>
@@ -26,17 +24,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'monsys_ipv4_address')->textInput() ?>
 
-    <?= $form->field($model, 'pid')->textInput() ?>
-
-    <?= $form->field($model, 'creator_id')->textInput() ?>
-
-    <?= $form->field($model, 'category_id')->textInput() ?>
+    <?= $form->field($model, 'pid')->dropDownList($existingSections)->label('Родительский раздел') ?>
 
     <?= $form->field($model, 'responsible_group_id')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

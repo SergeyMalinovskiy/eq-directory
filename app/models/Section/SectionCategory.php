@@ -45,11 +45,11 @@ class SectionCategory extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'short_name' => 'Short Name',
-            'creator_id' => 'Creator ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Наименование',
+            'short_name' => 'Сокращение',
+            'creator_id' => 'Создатель',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
         ];
     }
 }
