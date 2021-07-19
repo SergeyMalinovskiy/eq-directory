@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\models\Section\SectionCategory;
 use Yii;
 
 /**
@@ -32,6 +33,28 @@ class Section extends \yii\db\ActiveRecord
         ];
     }
 
+    public function afterFind()
+    {
+        $this->category_id = $this->getCategoryName();
+        $this->pid = $this->getParentSectionName();
+    }
+
+    private function getCategoryName() {
+        $category = SectionCategory::findOne($this->category_id);
+
+        return is_null($category)
+            ? $category
+            :  $category->name;
+    }
+
+    private function getParentSectionName() {
+        $parentSection = Section::findOne($this->pid);
+
+        return is_null($parentSection ) 
+            ? $this->pid 
+            : $parentSection->name;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -39,7 +62,7 @@ class Section extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'pid' => 'PID',
+            'pid' => 'Родительский раздел',
             'name' => 'Наименование',
             'creator_id' => 'Создатель',
             'category_id'=> 'Категория',

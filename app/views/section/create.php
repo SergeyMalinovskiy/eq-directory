@@ -15,7 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
-        'existingSections' => $existingSections
+        'existingSections' => $existingSections,
+        'existingSectionCategory' => $existingSectionCategory
     ]) ?>
 
 </div>

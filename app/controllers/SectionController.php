@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Section;
+use app\models\Section\SectionCategory;
 use app\models\SectionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -78,9 +79,12 @@ class SectionController extends Controller
                             ArrayHelper::map(Section::find()->asArray()->all(), 'id', 'name')
                         );
 
+        $existingSectionCategory = ArrayHelper::map(SectionCategory::find()->asArray()->all(), 'id', 'name');
+
         return $this->render('create', [
             'model' => $model,
-            'existingSections' => $existingSections
+            'existingSections' => $existingSections,
+            'existingSectionCategory' => $existingSectionCategory
         ]);
     }
 
