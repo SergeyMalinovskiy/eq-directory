@@ -23,7 +23,6 @@ use Exception;
  * @property int|null $responsible_group_id
  * @property string|null $created_at
  * @property string|null $updated_at
- * @property string|null $parentSectionName
  */
 class Equipment extends \yii\db\ActiveRecord
 {
@@ -46,7 +45,7 @@ class Equipment extends \yii\db\ActiveRecord
             [['lan_ports_count', 'uplink_ports_count', 'pid'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['title'], 'string', 'max' => 128],
-            [['serial_number', 'parent_section_name'], 'string', 'max' => 64],
+            [['serial_number'], 'string', 'max' => 64],
             [['mgt_ipv4_address', 'monsys_ipv4_address'], 'ip']
         ];
     }
@@ -74,15 +73,17 @@ class Equipment extends \yii\db\ActiveRecord
         //Converting integer ip addresses to string
         $this->mgt_ipv4_address     = long2ip($this->mgt_ipv4_address);
         $this->monsys_ipv4_address  = long2ip($this->monsys_ipv4_address);
-/* 
-        echo '<pre>';
-print_r($this->parentSectionName);
-echo '</pre>'; */
+
+        $this->pid = $this->getParentSectionName();
     }
 
-    public function getParentSection()
+    private function getParentSectionName()
     {
-        return $this->hasOne(Section::class, ['parrent_id' => 'pid']);
+        $parentSection = Section::findOne($this->pid);
+
+        return is_null($parentSection)
+            ? $this->pid
+            : $parentSection->name;
     }
 
     public function getHeirarchyList()
@@ -111,7 +112,7 @@ echo '</pre>'; */
             'uplink_ports_count' => 'Количество UpLink портов',
             'mgt_ipv4_address' => 'MGT IP адрес',
             'monsys_ipv4_address' => 'IP адрес в системе мониторинга',
-            //'parentSectionName' => 'Привязано к',
+            'pid' => 'Привязано к',
             'category_id' => 'Категория',
             'responsible_group_id' => 'Ответственная группа',
         ];
