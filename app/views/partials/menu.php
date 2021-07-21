@@ -10,7 +10,6 @@ use yii\helpers\Url;
     width: 0;
     position: relative;
     white-space: nowrap;
-    z-index: 1;
     top: 0;
     left: 0;
     overflow-x: hidden;
@@ -31,9 +30,10 @@ use yii\helpers\Url;
 }
 </style>
 
+<div class="bg-light border-right">
 <span style="font-size:30px;cursor:pointer" onclick="changeNav()">☰</span>
-<nav id="sidebarMenu" class="sidenav col-md-3 col-lg-2 d-block bg-light sidebar collapse">
-                <div id="mySidenav" class="sidenav position-sticky pt-3 d-flex">
+<nav id="mySidenav" class="sidenav d-block h-100 sidebar collapse">
+                <div class=" position-sticky pt-3 d-flex">
                     <ul class="nav flex-column mr-auto">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="<?= Url::toRoute(['/section/index']) ?>">
@@ -156,6 +156,7 @@ use yii\helpers\Url;
                     </ul> -->
                 </div>
             </nav>
+</div>
 <script>
     SidebarState=false;
 function changeNav() {
