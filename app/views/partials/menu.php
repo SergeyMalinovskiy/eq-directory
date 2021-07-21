@@ -6,7 +6,7 @@ use yii\helpers\Url;
 
 <style> 
 .sidenav {
-    height: 100%;
+    height: 100% !important;
     width: 0;
     position: relative;
     white-space: nowrap;
@@ -14,7 +14,6 @@ use yii\helpers\Url;
     left: 0;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
 }
 .sidenav .closebtn {    
     position: relative;
@@ -30,10 +29,10 @@ use yii\helpers\Url;
 }
 </style>
 
-<div class="bg-light border-right">
-<span style="font-size:30px;cursor:pointer" onclick="changeNav()">☰</span>
+<div class="border-right" style="min-width:40px hight:100%">
+<div class="text-center" style="width:40px"> <span style="font-size:30px; cursor:pointer" onclick="changeNav()">☰</span> </div>
 <nav id="mySidenav" class="sidenav d-block h-100 sidebar collapse">
-                <div class=" position-sticky pt-3 d-flex">
+                <div class=" position-sticky pt-3 d-flex border-right">
                     <ul class="nav flex-column mr-auto">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="<?= Url::toRoute(['/section/index']) ?>">
