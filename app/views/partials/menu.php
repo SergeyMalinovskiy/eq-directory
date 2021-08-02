@@ -6,7 +6,7 @@ use yii\helpers\Url;
 
 <style> 
 .sidenav {
-    height: 100% !important;
+    height: 100vh !important;
     width: 0;
     position: relative;
     white-space: nowrap;
