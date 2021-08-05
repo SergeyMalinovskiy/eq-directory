@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-class EquipmentCategoryController extends \yii\web\Controller
+class EquipmentCategoryController extends BaseController
 {
     public function actionIndex()
     {

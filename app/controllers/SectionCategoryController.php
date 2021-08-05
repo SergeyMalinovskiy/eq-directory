@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * SectionCategoryController implements the CRUD actions for SectionCategory model.
  */
-class SectionCategoryController extends Controller
+class SectionCategoryController extends BaseController
 {
 
     public function getViewPath()

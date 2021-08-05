@@ -14,7 +14,7 @@ use yii\helpers\ArrayHelper;
 /**
  * SectionController implements the CRUD actions for Section model.
  */
-class SectionController extends Controller
+class SectionController extends BaseController
 {
     /**
      * {@inheritdoc}

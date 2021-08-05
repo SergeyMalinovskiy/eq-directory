@@ -14,7 +14,7 @@ use yii\helpers\ArrayHelper;
 /**
  * EquipmentController implements the CRUD actions for Equipment model.
  */
-class EquipmentController extends Controller
+class EquipmentController extends BaseController
 {
     /**
      * {@inheritdoc}
