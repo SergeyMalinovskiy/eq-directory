@@ -39,7 +39,8 @@ AppAsset::register($this);
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
                 <?php if (Yii::$app->user->isGuest) : ?>
-                    <?= HTML::a('Войти', Url::toRoute(['/site/login']), ['class' => 'nav-link px-3'])?>
+                    <?=  Yii::$app->request->url != Url::toRoute(['/site/login'])  
+                        ? HTML::a('Войти', Url::toRoute(['/site/login']), ['class' => 'nav-link px-3']) : ''?>
                 <?php else : ?>
                     <?=
                         Html::beginForm(['/site/logout'], 'post')
