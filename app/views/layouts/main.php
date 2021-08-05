@@ -27,9 +27,9 @@ AppAsset::register($this);
 <body>
     <?php $this->beginBody() ?>
 
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-1 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="<?= Yii::$app->homeUrl ?>">
-            <?= Html::img('@web/images/logo.png', ['height' => '30px']) ?>
+            <?= Html::img('@web/images/logo.png', ['height' => '35px']) ?>
             <?= Yii::$app->name ?>
         </a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,38 +54,11 @@ AppAsset::register($this);
         </div>
     </header>
 
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid pl-0">
+        <div class="d-flex flex-row">
             <?= $this->render('../partials/menu') ?>
 
-            <?php
-            /* NavBar::begin([
-                'brandLabel' => Yii::$app->name,
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
-                ],
-            ]);
-            echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'About', 'url' => ['/site/about']],
-                    ['label' => 'Contact', 'url' => ['/site/contact']],
-                    Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) : ('<li>'
-                        . Html::beginForm(['/site/logout'], 'post')
-                        . Html::submitButton(
-                            'Logout (' . Yii::$app->user->identity->username . ')',
-                            ['class' => 'btn btn-link logout']
-                        )
-                        . Html::endForm()
-                        . '</li>')
-                ],
-            ]);
-            NavBar::end(); */
-            ?>
-
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="mx-2">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
