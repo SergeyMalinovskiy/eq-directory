@@ -11,6 +11,7 @@ use Yii;
  * @property int $id
  * @property int|null $pid
  * @property string|null $name
+ * @property int|null $category_id
  */
 class Section extends \yii\db\ActiveRecord
 {
