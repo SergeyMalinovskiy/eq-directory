@@ -56,9 +56,9 @@ AppAsset::register($this);
 
     <div class="container-fluid pl-0">
         <div class="d-flex flex-row">
-            <?= $this->render('../partials/menu') ?>
+            <?= Yii::$app->user->isGuest ? '' : $this->render('../partials/menu') ?>
 
-            <main class="mx-2">
+            <main class="mx-2 w-100">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
