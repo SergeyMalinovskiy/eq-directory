@@ -11,6 +11,9 @@ use app\models\Equipment\Equipment;
  */
 class EquipmentSearch extends Equipment
 {
+    public $sections;
+    public $types;
+    
     /**
      * {@inheritdoc}
      */
@@ -19,6 +22,8 @@ class EquipmentSearch extends Equipment
         return [
             [['id', 'lan_ports_count', 'uplink_ports_count', 'mgt_ipv4_address', 'monsys_ipv4_address', 'pid', 'creator_id', 'category_id', 'responsible_group_id'], 'integer'],
             [['title', 'comment', 'serial_number', 'created_at', 'updated_at'], 'safe'],
+            [ 'sections', 'each', 'rule' => [ 'integer' ]],
+            [ 'types', 'each', 'rule' => [ 'integer' ]]
         ];
     }
 
