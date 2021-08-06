@@ -99,12 +99,23 @@ class SectionController extends BaseController
     {
         $model = $this->findModel($id);
 
+        $existingSections = [Yii::$app->params['rootSectionName']];
+
+        $existingSections = ArrayHelper::merge(
+                            $existingSections, 
+                            ArrayHelper::map(Section::find()->asArray()->all(), 'id', 'name')
+                        );
+
+        $existingSectionCategory = ArrayHelper::map(SectionCategory::find()->asArray()->all(), 'id', 'name');
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'existingSections' => $existingSections,
+            'existingSectionCategory' => $existingSectionCategory
         ]);
     }
 
