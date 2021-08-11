@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 /**
  * SectionController implements the CRUD actions for Section model.
@@ -147,5 +148,19 @@ class SectionController extends BaseController
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionGetChilds($pid)
+    {
+        $section = (new Section())->findOne([ 'id' => $pid ]);
+
+        return Json::encode(ArrayHelper::map($section->childs, 'id', 'name'));
+    }
+
+    public function actionGetChildsCount($pid)
+    {
+        $childsCount = Section::find()->where(['id' => $pid])->count();
+
+        return $childsCount;
     }
 }

@@ -40,9 +40,17 @@ class EquipmentController extends BaseController
         $searchModel = new EquipmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $existingSections = ['-'];
+
+        $existingSections = ArrayHelper::merge(
+                            $existingSections, 
+                            ArrayHelper::map(Section::find(['pid' => 0])->asArray()->all(), 'id', 'name')
+                        );
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'sections' => $existingSections
         ]);
     }
 

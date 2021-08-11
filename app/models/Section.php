@@ -56,6 +56,10 @@ class Section extends \yii\db\ActiveRecord
             : $parentSection->name;
     }
 
+    public function getChilds() {
+        return Section::find()->where(['pid' => $this->id])->asArray()->all();
+    }
+
     /**
      * {@inheritdoc}
      */
