@@ -1,7 +1,10 @@
 <?php
 
+use app\models\Equipment\Equipment;
+use app\services\SectionService;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\Equipment\EquipmentSearch */
@@ -28,7 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'pid',
+            [
+                'attribute' => 'pid',
+                'format' => 'raw',
+                'value' => function(Equipment $el) {
+                    $parentSectionName = SectionService::getSectionNameById($el->pid);
+                    return $el->pid != 0 
+                        ? Html::a($parentSectionName, [Url::toRoute(['section/view', 'id' => $el->pid])])
+                        : $parentSectionName;
+                }
+            ],
             'comment:ntext',
             'serial_number',
             'lan_ports_count',
