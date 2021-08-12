@@ -2,6 +2,7 @@
 
 namespace app\services;
 
+use app\models\Section;
 use app\models\Section\SectionCategory;
 use app\models\SectionSearch;
 
@@ -17,6 +18,24 @@ class SectionService {
 
     private static function getSectionCategoryById($id) {
         return (new SectionCategory())->findOne($id);
+    }
+
+    /**
+     * @param integer $id
+     * @return yii\db\ActiveQuery
+     */
+    private static function getChildrensQuery($id)
+    {
+        return (new Section())->find()->where(['pid' => $id]);
+    }
+
+    /**
+     * @param integer $id
+     * @return integer
+     */
+    public static function getChildCount($id)
+    {
+        return self::getChildrensQuery($id)->count();
     }
 
     /**

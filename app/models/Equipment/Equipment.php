@@ -113,6 +113,9 @@ class Equipment extends \yii\db\ActiveRecord
             'pid' => 'Привязано к',
             'category_id' => 'Категория',
             'responsible_group_id' => 'Ответственная группа',
+            'creator_id' => 'Создано',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата изменения'
         ];
     }
 }

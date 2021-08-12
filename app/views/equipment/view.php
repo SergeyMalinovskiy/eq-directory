@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             'creator_id',
-            'category_id',
+            //'category_id',
             'responsible_group_id',
             'created_at',
             'updated_at',
