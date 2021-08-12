@@ -35,7 +35,7 @@ $this->registerJs(
 
                     if(data.length !== 0) {
                         const listItems = data.reduce((a, c, idx) => {
-                            return a + '<li data-id='+c.id+' class=\'list-group-item\'>'+c.name+'</li>'
+                            return a + '<li data-id='+c.id+' class=\'list-group-item selected\'>'+c.name+'</li>'
                         }, '');
         
                         currentElement.after(`

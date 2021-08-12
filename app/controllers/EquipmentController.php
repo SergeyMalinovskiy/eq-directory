@@ -6,10 +6,12 @@ use Yii;
 use app\models\Equipment\Equipment;
 use app\models\Equipment\EquipmentSearch;
 use app\models\Section;
+use app\services\EquipmentService;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 /**
  * EquipmentController implements the CRUD actions for Equipment model.
@@ -122,6 +124,17 @@ class EquipmentController extends BaseController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionGetWithSections()
+    {
+        $params = Yii::$app->request->queryParams;
+
+        $equipmentService = new EquipmentService();
+
+        $result = $equipmentService->getAllWithSections($params);
+
+        return  Json::encode($result);
     }
 
     /**
