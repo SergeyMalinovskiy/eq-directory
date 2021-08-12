@@ -34,12 +34,6 @@ class Section extends \yii\db\ActiveRecord
         ];
     }
 
-    public function afterFind()
-    {
-        $this->category_id = $this->getCategoryName();
-        $this->pid = $this->getParentSectionName();
-    }
-
     private function getCategoryName() {
         $category = SectionCategory::findOne($this->category_id);
 

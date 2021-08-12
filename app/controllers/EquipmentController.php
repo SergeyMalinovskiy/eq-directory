@@ -103,12 +103,17 @@ class EquipmentController extends BaseController
     {
         $model = $this->findModel($id);
 
+        $sectionModel = new Section();
+
+        $existingSections = ArrayHelper::map($sectionModel->find()->asArray()->all(), 'id', 'name');
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'existingSections' => $existingSections
         ]);
     }
 

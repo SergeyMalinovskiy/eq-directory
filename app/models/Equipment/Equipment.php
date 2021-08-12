@@ -73,16 +73,14 @@ class Equipment extends \yii\db\ActiveRecord
         //Converting integer ip addresses to string
         $this->mgt_ipv4_address     = long2ip($this->mgt_ipv4_address);
         $this->monsys_ipv4_address  = long2ip($this->monsys_ipv4_address);
-
-        $this->pid = $this->getParentSectionName();
     }
 
-    private function getParentSectionName()
+    public static function getParentSectionName($pid)
     {
-        $parentSection = Section::findOne($this->pid);
+        $parentSection = Section::findOne($pid);
 
         return is_null($parentSection)
-            ? $this->pid
+            ? 'Not Found'
             : $parentSection->name;
     }
 

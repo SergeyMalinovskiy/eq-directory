@@ -6,6 +6,7 @@ use Yii;
 use app\models\Section;
 use app\models\Section\SectionCategory;
 use app\models\SectionSearch;
+use app\services\EquipmentService;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -55,8 +56,13 @@ class SectionController extends BaseController
      */
     public function actionView($id)
     {
+        $equipmentService = new EquipmentService();
+
+        $allContent = $equipmentService->getAllWithSections(['pid' => $id]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'includedContent' => $allContent
         ]);
     }
 
